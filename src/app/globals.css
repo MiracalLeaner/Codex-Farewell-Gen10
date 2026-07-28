@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: Iowan Old Style, Palatino Linotype, Palatino, "URW Palladio L", Georgia, serif;
+  --font-body: "Palatino Linotype", Palatino, Palatino, Georgia, "Iowan Old Style", serif;
+  --font-hand: "Segoe Script", "Bradley Hand", "Comic Sans MS", "Apple Chancery", cursive;
+  --font-mono: "Courier New", Courier, ui-monospace, monospace;
+
+  --color-paper: #f2e8d0;
+  --color-paper-dark: #e6d6ab;
+  --color-paper-deep: #d8c491;
+  --color-ink: #2a1c12;
+  --color-ink-soft: #4a3524;
+  --color-wood: #241712;
+  --color-wood-light: #3a2a1e;
+  --color-gold: #b8863b;
+  --color-gold-bright: #e0ac53;
+  --color-gold-pale: #f0d9a6;
+  --color-navy: #2c3a4f;
+  --color-cream: #faf5e6;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--color-wood);
+  color: var(--color-ink);
+  overscroll-behavior-y: none;
+}
+
+body {
+  font-family: var(--font-body), serif;
+}
+
+::selection {
+  background: var(--color-gold-bright);
+  color: var(--color-wood);
+}
+
+/* Paper grain texture, generated, no external assets */
+.paper-texture {
+  position: relative;
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(216, 196, 145, 0.5), transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(184, 134, 59, 0.15), transparent 55%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(74, 53, 36, 0.035) 0px,
+      rgba(74, 53, 36, 0.035) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+}
+
+.paper-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16  0 0 0 0 0.11  0 0 0 0 0.07  0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wood-texture {
+  background-color: var(--color-wood);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(224, 172, 83, 0.08), transparent 60%),
+    repeating-linear-gradient(
+      95deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      rgba(0, 0, 0, 0.15) 2px,
+      transparent 2px,
+      transparent 40px
+    );
+}
+
+.ink-label {
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.signature {
+  font-family: var(--font-hand), cursive;
+}
+
+/* Dust particle drift */
+@keyframes dust-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--dust-opacity, 0.5);
+  }
+  90% {
+    opacity: var(--dust-opacity, 0.5);
+  }
+  100% {
+    transform: translate3d(var(--dust-x, 20px), var(--dust-y, -140px), 0);
+    opacity: 0;
+  }
+}
+
+.dust-particle {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(240, 217, 166, 0.9), rgba(240, 217, 166, 0));
+  animation: dust-drift var(--dust-duration, 12s) linear infinite;
+  animation-delay: var(--dust-delay, 0s);
+  pointer-events: none;
+}
+
+@keyframes light-shift {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateX(-4%) rotate(-1deg);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateX(4%) rotate(1deg);
+  }
+}
+
+.light-beam {
+  animation: light-shift 9s ease-in-out infinite;
+}
+
+.page-shadow {
+  box-shadow:
+    0 1px 0 rgba(74, 53, 36, 0.25),
+    0 30px 60px -20px rgba(0, 0, 0, 0.55),
+    0 8px 20px -8px rgba(0, 0, 0, 0.4);
+}
+
+/* Richer, warmer wood grain used only on the opening Codex book cover.
+   Additive class — does not modify the shared .wood-texture used elsewhere. */
+.codex-cover-texture {
+  background-image:
+    linear-gradient(120deg, var(--color-wood-light), var(--color-wood) 78%),
+    repeating-linear-gradient(
+      88deg,
+      rgba(0, 0, 0, 0.22) 0px,
+      rgba(0, 0, 0, 0.22) 1px,
+      transparent 1px,
+      transparent 7px
+    ),
+    repeating-linear-gradient(
+      91deg,
+      rgba(224, 172, 83, 0.05) 0px,
+      rgba(224, 172, 83, 0.05) 2px,
+      transparent 2px,
+      transparent 22px
+    ),
+    radial-gradient(ellipse at 30% 20%, rgba(224, 172, 83, 0.12), transparent 60%);
+}
+
+/* Soft cinematic vignette for the opening scene only. */
+.codex-vignette {
+  background: radial-gradient(
+    ellipse at 50% 42%,
+    transparent 30%,
+    rgba(0, 0, 0, 0.35) 75%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+.leather-texture {
+  background-color: #4a2e22;
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(184, 134, 59, 0.18), transparent 55%),
+    radial-gradient(circle, rgba(0, 0, 0, 0.25) 1px, transparent 1.5px);
+  background-size: auto, 6px 6px;
+}
+
+.letter-crease::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(74, 53, 36, 0.15);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
