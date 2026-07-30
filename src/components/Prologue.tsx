@@ -7,7 +7,7 @@ export default function Prologue({ generation }: { generation: GenerationData })
   const [firstPara, ...restParas] = generation.intro.body.split("\n\n");
 
   return (
-    <section className="paper-texture relative px-6 py-28 sm:px-16">
+    <section className="paper-texture relative px-6 py-16 sm:px-16 sm:py-28">
       <div className="mx-auto max-w-3xl">
         <ScrollReveal>
           <p className="ink-label text-xs text-[var(--color-gold)]">{generation.intro.eyebrow}</p>
@@ -26,7 +26,7 @@ export default function Prologue({ generation }: { generation: GenerationData })
           >
             <span
               aria-hidden
-              className="float-left mr-3 mt-1 text-[4.2rem] leading-[0.8] text-[var(--color-gold)]"
+              className="float-left mr-3 mt-1 text-[3.4rem] leading-[0.8] text-[var(--color-gold)] sm:text-[4.2rem]"
               style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
             >
               {firstPara.charAt(0)}

@@ -5,7 +5,7 @@ import type { MilestoneEntry } from "@/lib/types";
 
 export default function Milestones({ items }: { items: MilestoneEntry[] }) {
   return (
-    <section className="paper-texture relative px-6 pb-28 pt-4 sm:px-16 sm:pt-8">
+    <section className="paper-texture relative px-6 pb-20 pt-4 sm:px-16 sm:pb-28 sm:pt-8">
       <div className="mx-auto max-w-5xl">
         <ScrollReveal>
           <div className="mx-auto mb-14 h-px w-16 bg-[var(--color-gold)]/40 sm:mb-16" />

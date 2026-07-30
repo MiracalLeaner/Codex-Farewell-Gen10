@@ -8,7 +8,14 @@ import type { GalleryEntry } from "@/lib/types";
 
 // Varied heights per column position give the grid an editorial,
 // hand-curated feel instead of a uniform product-grid look.
-const heights = ["h-56", "h-72", "h-64", "h-80", "h-60", "h-72"];
+const heights = [
+  "h-44 sm:h-56",
+  "h-56 sm:h-72",
+  "h-52 sm:h-64",
+  "h-60 sm:h-80",
+  "h-48 sm:h-60",
+  "h-56 sm:h-72",
+];
 
 interface PolaroidGalleryProps {
   eyebrow?: string;
@@ -24,7 +31,7 @@ export default function PolaroidGallery({ eyebrow, title, items, dark = false }:
   const eyebrowColor = dark ? "text-[var(--color-gold-pale)]/70" : "text-[var(--color-gold)]";
 
   return (
-    <section className={`relative px-6 py-28 sm:px-16 ${dark ? "wood-texture" : "paper-texture"}`}>
+    <section className={`relative px-6 py-16 sm:px-16 sm:py-28 ${dark ? "wood-texture" : "paper-texture"}`}>
       <div className="mx-auto max-w-5xl">
         {(eyebrow || title) && (
           <ScrollReveal>

@@ -13,7 +13,7 @@ export default function Chapter1({ generation }: { generation: GenerationData })
   const parallaxY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (
-    <section className="paper-texture relative overflow-hidden px-6 py-28 sm:px-16">
+    <section className="paper-texture relative overflow-hidden px-6 py-16 sm:px-16 sm:py-28">
       <div className="mx-auto max-w-3xl text-center">
         <ScrollReveal>
           <p className="ink-label text-xs text-[var(--color-gold)]">

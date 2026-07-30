@@ -17,7 +17,7 @@ export default function MembersList({ members, onSelect }: MembersListProps) {
             onClick={() => onSelect(name)}
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.97 }}
-            className="group relative rounded-full border border-[var(--color-gold)]/40 bg-[var(--color-wood)]/50 px-5 py-2.5 backdrop-blur-sm transition-colors duration-300 hover:border-[var(--color-gold-bright)] hover:bg-[var(--color-gold)]/15"
+            className="group relative rounded-full border border-[var(--color-gold)]/40 bg-[var(--color-wood)]/50 px-5 py-3 backdrop-blur-sm transition-colors duration-300 hover:border-[var(--color-gold-bright)] hover:bg-[var(--color-gold)]/15 sm:py-2.5"
           >
             <span
               className="text-base text-[var(--color-gold-pale)] sm:text-lg"

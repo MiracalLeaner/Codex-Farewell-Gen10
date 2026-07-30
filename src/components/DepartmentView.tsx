@@ -48,7 +48,7 @@ export default function DepartmentView({ slug, department, onClose }: Department
       </motion.button>
 
       {/* Hero — the photo morphs in from the Archive Directory tile */}
-      <section className="relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden px-6 py-28 text-center sm:min-h-screen">
+      <section className="relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden px-6 py-20 text-center sm:min-h-screen sm:py-28">
         <DustField count={12} />
         <motion.div layoutId={`dept-photo-${slug}`} className="absolute inset-0">
           <Image
@@ -91,7 +91,7 @@ export default function DepartmentView({ slug, department, onClose }: Department
       </section>
 
       {/* Our Story */}
-      <section className="paper-texture relative px-6 py-24 sm:px-16">
+      <section className="paper-texture relative px-6 py-16 sm:px-16 sm:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <ScrollReveal>
             <p className="ink-label text-xs text-[var(--color-gold)]">Our Story</p>
@@ -109,7 +109,7 @@ export default function DepartmentView({ slug, department, onClose }: Department
       <PolaroidGallery eyebrow="Gallery" title="Archival Photographs" items={department.gallery} />
 
       {/* Members */}
-      <section className="wood-texture relative px-6 py-28 sm:px-16">
+      <section className="wood-texture relative px-6 py-16 sm:px-16 sm:py-28">
         <div className="mx-auto max-w-4xl text-center">
           <ScrollReveal>
             <p className="ink-label text-xs text-[var(--color-gold-pale)]/70">Members</p>
@@ -131,7 +131,7 @@ export default function DepartmentView({ slug, department, onClose }: Department
       </section>
 
       {/* Department Letter */}
-      <section className="paper-texture relative px-6 py-28 sm:px-16">
+      <section className="paper-texture relative px-6 py-16 sm:px-16 sm:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <ScrollReveal>
             <p className="ink-label text-xs text-[var(--color-gold)]">Department Letter</p>

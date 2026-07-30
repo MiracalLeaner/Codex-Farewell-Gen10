@@ -55,8 +55,9 @@ function ExhibitPanel({
         onClick={() => onOpen(slug)}
         onPointerMove={handleMove}
         onPointerLeave={handleLeave}
-        className="group relative block w-full text-left [perspective:1200px]"
-        style={{ marginTop: index % 2 === 1 ? "2.5rem" : 0 }}
+        className={`group relative block w-full text-left [perspective:1200px] ${
+          index % 2 === 1 ? "sm:mt-10" : ""
+        }`}
       >
         <motion.div
           className="page-shadow relative aspect-[3/4] w-full overflow-hidden rounded-sm"
@@ -69,7 +70,7 @@ function ExhibitPanel({
               src={dept.heroImage}
               alt={dept.name}
               fill
-              sizes="(max-width: 640px) 90vw, 22vw"
+              sizes="(max-width: 640px) 90vw, (max-width: 1023px) 45vw, 22vw"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             />
           </motion.div>
@@ -102,7 +103,7 @@ function ExhibitPanel({
             {dept.fullName && (
               <p className="text-xs leading-relaxed text-[var(--color-gold-pale)]/75">{dept.fullName}</p>
             )}
-            <p className="ink-label mt-2 translate-y-1 text-[10px] text-[var(--color-gold-bright)] opacity-0 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100">
+            <p className="ink-label mt-2 translate-y-0 text-[10px] text-[var(--color-gold-bright)] opacity-70 transition-all duration-400 sm:translate-y-1 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
               Enter archive →
             </p>
           </div>
@@ -114,7 +115,7 @@ function ExhibitPanel({
 
 export default function ArchiveDirectory({ generation, departments, onOpen }: ArchiveDirectoryProps) {
   return (
-    <section id="archive" className="leather-texture relative overflow-hidden px-6 py-32 sm:px-16">
+    <section id="archive" className="leather-texture relative overflow-hidden px-6 py-20 sm:px-16 sm:py-32">
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-full w-[70vw] -translate-x-1/2 opacity-50"
         style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(224,172,83,0.15), transparent 65%)" }}
@@ -134,7 +135,7 @@ export default function ArchiveDirectory({ generation, departments, onOpen }: Ar
           </p>
         </ScrollReveal>
 
-        <div className="mt-24 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <div className="mt-14 grid grid-cols-1 gap-8 sm:mt-24 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {order.map((slug, i) => (
             <ExhibitPanel key={slug} slug={slug} dept={departments[slug]} index={i} onOpen={onOpen} />
           ))}

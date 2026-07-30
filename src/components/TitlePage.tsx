@@ -6,7 +6,7 @@ import type { GenerationData } from "@/lib/types";
 
 export default function TitlePage({ generation }: { generation: GenerationData }) {
   return (
-    <section className="paper-texture relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-24 text-center">
+    <section className="paper-texture relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-16 text-center sm:py-24">
       <DustField count={10} />
       <motion.p
         initial={{ opacity: 0, y: 12 }}

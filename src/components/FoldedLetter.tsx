@@ -43,7 +43,7 @@ export default function FoldedLetter({ letter }: { letter: DepartmentLetter }) {
               className="absolute -top-3 left-1/2 h-6 w-14 -translate-x-1/2 rotate-1 bg-[var(--color-gold-pale)]/60"
               style={{ boxShadow: "0 2px 4px rgba(0,0,0,0.15)" }}
             />
-            <div className="flex h-full w-full flex-col items-center justify-center gap-3 px-8 text-center">
+            <div className="flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center sm:px-8">
               <span
                 aria-hidden
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-gold)]/50 transition-transform duration-300 group-hover:scale-110"
@@ -67,7 +67,7 @@ export default function FoldedLetter({ letter }: { letter: DepartmentLetter }) {
             initial={{ opacity: 0, y: 24, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
-            className="page-shadow paper-texture relative min-h-[420px] bg-[var(--color-cream)] px-8 py-10 sm:px-14 sm:py-14"
+            className="page-shadow paper-texture relative min-h-[380px] bg-[var(--color-cream)] px-6 py-8 sm:min-h-[420px] sm:px-14 sm:py-14"
           >
             <div
               aria-hidden
@@ -82,7 +82,7 @@ export default function FoldedLetter({ letter }: { letter: DepartmentLetter }) {
             </p>
             <div className="mt-8 h-px w-14 bg-[var(--color-gold)]/50" />
             <p
-              className="mt-8 whitespace-pre-line text-xl leading-[1.9] text-[var(--color-ink-soft)] sm:text-[1.4rem]"
+              className="mt-8 whitespace-pre-line text-lg leading-[1.85] text-[var(--color-ink-soft)] sm:text-[1.4rem] sm:leading-[1.9]"
               style={{ fontFamily: "var(--font-hand)" }}
             >
               {typed}

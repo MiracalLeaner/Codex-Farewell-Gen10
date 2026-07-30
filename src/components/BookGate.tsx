@@ -71,7 +71,7 @@ export default function BookGate({ onOpened, onStart }: BookGateProps) {
             transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
           >
             <p className="ink-label text-xs text-[var(--color-gold-pale)]/70">
-              LSC FTU2 · Archive of Generations
+              LSC FTU HCMC · Archive of Generations
             </p>
 
             {/* the book */}
@@ -99,9 +99,9 @@ export default function BookGate({ onOpened, onStart }: BookGateProps) {
                 />
               </div>
 
-              <div className="relative h-[286px] w-[390px] [perspective:1400px] sm:h-[340px] sm:w-[468px]">
+              <div className="relative aspect-[195/143] w-[min(84vw,390px)] [perspective:1400px] sm:aspect-auto sm:h-[340px] sm:w-[468px]">
                 {/* desk shadow — deepened */}
-                <div className="absolute -bottom-7 left-1/2 h-8 w-[82%] -translate-x-1/2 rounded-full bg-black/65 blur-2xl" />
+                <div className="absolute -bottom-5 left-1/2 h-6 w-[82%] -translate-x-1/2 rounded-full bg-black/65 blur-2xl sm:-bottom-7 sm:h-8" />
 
                 {/* ambient glow that grows as the seal breaks, hinting at what's inside */}
                 <motion.div
@@ -163,7 +163,7 @@ export default function BookGate({ onOpened, onStart }: BookGateProps) {
                     className="text-center text-xl text-[var(--color-gold-pale)]/80 sm:text-2xl"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
-                    Codex
+                    CodeX
                   </span>
                 </div>
               </motion.div>

@@ -35,7 +35,11 @@ export default function DustField({ count = 18, className = "" }: DustFieldProps
   // Lazy initializer runs exactly once on mount (never re-invoked on
   // re-render), which is the React-recommended place for one-time
   // non-deterministic setup like random particle positions.
-  const [particles] = useState<Particle[]>(() => generateParticles(count));
+  const [particles] = useState<Particle[]>(() => {
+    const isNarrow = typeof window !== "undefined" && window.innerWidth < 640;
+    const effectiveCount = isNarrow ? Math.ceil(count * 0.55) : count;
+    return generateParticles(effectiveCount);
+  });
 
   return (
     <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
