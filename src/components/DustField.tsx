@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface DustFieldProps {
   count?: number;
   className?: string;
+  /** Opt-in: lets this dust layer drift a hair slower than the page as it
+   * scrolls past, so it reads as sitting slightly behind the content —
+   * an almost-invisible depth cue. Only meaningful inside normal document
+   * scroll flow (skip it for dust inside fixed/overlay scenes). */
+  parallax?: boolean;
 }
 
 interface Particle {
@@ -31,19 +37,48 @@ function generateParticles(count: number): Particle[] {
   }));
 }
 
-export default function DustField({ count = 18, className = "" }: DustFieldProps) {
-  // Lazy initializer runs exactly once on mount (never re-invoked on
-  // re-render), which is the React-recommended place for one-time
-  // non-deterministic setup like random particle positions.
-  const [particles] = useState<Particle[]>(() => {
-    const isNarrow = typeof window !== "undefined" && window.innerWidth < 640;
-    const effectiveCount = isNarrow ? Math.ceil(count * 0.55) : count;
-    return generateParticles(effectiveCount);
+function subscribeToResize(callback: () => void) {
+  window.addEventListener("resize", callback);
+  return () => window.removeEventListener("resize", callback);
+}
+
+// Reads the live viewport width without ever disagreeing with the
+// server-rendered markup: React uses getServerSnapshot for both the server
+// render and the client's first hydration pass, then switches to the real
+// getSnapshot afterwards — the sanctioned way to read window-derived state.
+function useIsNarrowViewport() {
+  return useSyncExternalStore(
+    subscribeToResize,
+    () => window.innerWidth < 640,
+    () => false
+  );
+}
+
+export default function DustField({ count = 18, className = "", parallax = false }: DustFieldProps) {
+  // Lazy initializer runs exactly once on mount and must render identically
+  // on the server and on the client's first pass — so it never reads
+  // window here (that would produce a different particle count per
+  // environment and trigger a hydration mismatch).
+  const [particles] = useState<Particle[]>(() => generateParticles(count));
+  const isNarrow = useIsNarrowViewport();
+  const visibleCount = isNarrow ? Math.ceil(count * 0.55) : count;
+
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
   });
+  // A few px of counter-drift — sits just behind the content as it passes.
+  const y = useTransform(scrollYProgress, [0, 1], parallax ? ["-3%", "3%"] : ["0%", "0%"]);
 
   return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
-      {particles.map((p) => (
+    <motion.div
+      ref={ref}
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
+      style={parallax ? { y } : undefined}
+      aria-hidden="true"
+    >
+      {particles.slice(0, visibleCount).map((p) => (
         <span
           key={p.id}
           className="dust-particle"
@@ -62,6 +97,6 @@ export default function DustField({ count = 18, className = "" }: DustFieldProps
           }
         />
       ))}
-    </div>
+    </motion.div>
   );
 }

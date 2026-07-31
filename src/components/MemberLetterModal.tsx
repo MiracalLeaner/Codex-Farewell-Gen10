@@ -24,16 +24,17 @@ export default function MemberLetterModal({ name, paragraphs, onClose }: MemberL
             aria-modal="true"
             aria-label={`Letter for ${name}`}
             onClick={(e) => e.stopPropagation()}
-            initial={{ scale: 0.94, opacity: 0, y: 18 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
+            initial={{ scale: 0.94, opacity: 0, y: 18, rotate: -1, rotateX: -3 }}
+            animate={{ scale: 1, opacity: 1, y: 0, rotate: 0, rotateX: 0 }}
             exit={{ scale: 0.96, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 0.61, 0.36, 1] }}
+            transition={{ type: "spring", stiffness: 190, damping: 24, mass: 0.9 }}
+            style={{ transformPerspective: 1000 }}
             className="page-shadow paper-texture relative max-h-[85vh] w-full max-w-lg overflow-y-auto bg-[var(--color-cream)] px-6 py-10 sm:px-12 sm:py-12"
           >
             <button
               onClick={onClose}
               aria-label="Close letter"
-              className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full text-[var(--color-ink-soft)]/60 transition-colors hover:bg-[var(--color-ink)]/5 hover:text-[var(--color-ink)] sm:right-4 sm:top-4 sm:h-8 sm:w-8"
+              className="touch-feedback focus-ring absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-ink-soft)]/60 transition-colors hover:bg-[var(--color-ink)]/5 hover:text-[var(--color-ink)] sm:right-4 sm:top-4 sm:h-8 sm:w-8"
             >
               ✕
             </button>

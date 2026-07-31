@@ -3,7 +3,7 @@
   "name": "MEDIA",
   "fullName": "",
   "tagline": "Giữ lại từng khoảnh khắc bằng tất cả sự chỉn chu",
-  "story": "Đằng sau mỗi bài đăng, mỗi video, mỗi bộ nhận diện được chăm chút là rất nhiều đêm thức khuya và rất nhiều lần sửa đi sửa lại. Media không chỉ tạo ra hình ảnh cho LSC — mà còn lưu giữ cảm xúc, khoảnh khắc và dấu ấn của cả câu lạc bộ theo cách rất riêng.",
+  "story": "Đằng sau mỗi bài đăng, mỗi video, mỗi bộ nhận diện được chăm chút là rất nhiều đêm thức khuya và rất nhiều lần sửa đi sửa lại. Media không chỉ tạo ra hình ảnh cho LSC mà còn lưu giữ cảm xúc, khoảnh khắc và dấu ấn của cả câu lạc bộ theo cách rất riêng.",
   "members": [
     "Nguyễn Minh Hằng",
     "Nguyễn Ngọc Phương Quyên",
@@ -19,27 +19,27 @@
   "gallery": [
     {
       "image": "/images/media/gallery-1.jpg",
-      "caption": "Plate I"
+      "caption": "Bonding dáng xinhh"
     },
     {
       "image": "/images/media/gallery-2.jpg",
-      "caption": "Plate II"
+      "caption": "Meida thời còn trẻ"
     },
     {
       "image": "/images/media/gallery-3.jpg",
-      "caption": "Plate III"
+      "caption": "SCMission nè"
     },
     {
       "image": "/images/media/gallery-4.jpg",
-      "caption": "Plate IV"
+      "caption": "Photoshoot"
     },
     {
       "image": "/images/media/gallery-5.jpg",
-      "caption": "Plate V"
+      "caption": "Summertripp"
     },
     {
       "image": "/images/media/gallery-6.jpg",
-      "caption": "Plate VI"
+      "caption": "Welcome party"
     }
   ],
   "departmentLetter": {

@@ -11,6 +11,7 @@ export default function Chapter1({ generation }: { generation: GenerationData })
   const imageRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: imageRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.04, 1, 1.04]);
 
   return (
     <section className="paper-texture relative overflow-hidden px-6 py-16 sm:px-16 sm:py-28">
@@ -32,7 +33,7 @@ export default function Chapter1({ generation }: { generation: GenerationData })
             ref={imageRef}
             className="page-shadow relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-[var(--color-paper-deep)]"
           >
-            <motion.div className="absolute inset-0 -m-[6%]" style={{ y: parallaxY }}>
+            <motion.div className="absolute inset-0 -m-[6%]" style={{ y: parallaxY, scale }}>
               <Image
                 src={chapter1.image}
                 alt={chapter1.title}

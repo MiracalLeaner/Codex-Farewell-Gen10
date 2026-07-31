@@ -7,7 +7,7 @@ import type { GenerationData } from "@/lib/types";
 export default function TitlePage({ generation }: { generation: GenerationData }) {
   return (
     <section className="paper-texture relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-16 text-center sm:py-24">
-      <DustField count={10} />
+      <DustField count={10} parallax />
       <motion.p
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 0.7, y: 0 }}

@@ -19,7 +19,7 @@ export default function Prologue({ generation }: { generation: GenerationData })
           </h2>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.2} className="mt-10">
+        <ScrollReveal delay={0.2} className="mt-10 max-w-2xl">
           <p
             className="text-lg leading-relaxed text-[var(--color-ink-soft)] sm:text-xl"
             style={{ fontFamily: "var(--font-body)" }}

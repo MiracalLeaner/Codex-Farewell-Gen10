@@ -28,12 +28,21 @@ function ExhibitPanel({
   const ref = useRef<HTMLButtonElement>(null);
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
-  const rotateX = useSpring(useTransform(my, [0, 1], [7, -7]), { stiffness: 200, damping: 20 });
-  const rotateY = useSpring(useTransform(mx, [0, 1], [-7, 7]), { stiffness: 200, damping: 20 });
+  const rotateX = useSpring(useTransform(my, [0, 1], [7, -7]), { stiffness: 170, damping: 22 });
+  const rotateY = useSpring(useTransform(mx, [0, 1], [-7, 7]), { stiffness: 170, damping: 22 });
   const glowX = useTransform(mx, (v) => `${v * 100}%`);
   const glowY = useTransform(my, (v) => `${v * 100}%`);
   const glowBackground = useTransform([glowX, glowY], ([x, y]) =>
     `radial-gradient(circle at ${x} ${y}, rgba(224,172,83,0.35), transparent 55%)`
+  );
+  // The shadow leans away from the tilt direction, as if the panel were
+  // physically lifting off the wall toward the pointer.
+  const shadowX = useSpring(useTransform(mx, [0, 1], [10, -10]), { stiffness: 170, damping: 24 });
+  const shadowY = useSpring(useTransform(my, [0, 1], [8, -8]), { stiffness: 170, damping: 24 });
+  const dynamicShadow = useTransform(
+    [shadowX, shadowY],
+    ([sx, sy]) =>
+      `0 1px 0 rgba(74,53,36,0.25), ${sx}px ${sy}px 60px -20px rgba(0,0,0,0.55), ${Number(sx) / 2}px ${Number(sy) / 2}px 20px -8px rgba(0,0,0,0.4)`
   );
 
   function handleMove(e: React.PointerEvent<HTMLButtonElement>) {
@@ -55,15 +64,16 @@ function ExhibitPanel({
         onClick={() => onOpen(slug)}
         onPointerMove={handleMove}
         onPointerLeave={handleLeave}
-        className={`group relative block w-full text-left [perspective:1200px] ${
+        className={`group relative block w-full text-left [perspective:1200px] focus-ring ${
           index % 2 === 1 ? "sm:mt-10" : ""
         }`}
       >
         <motion.div
-          className="page-shadow relative aspect-[3/4] w-full overflow-hidden rounded-sm"
-          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+          className="relative aspect-[3/4] w-full overflow-hidden rounded-sm"
+          style={{ rotateX, rotateY, boxShadow: dynamicShadow, transformStyle: "preserve-3d" }}
           whileHover={{ scale: 1.02 }}
-          transition={{ type: "spring", stiffness: 260, damping: 22 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ type: "spring", stiffness: 260, damping: 24 }}
         >
           <motion.div layoutId={`dept-photo-${slug}`} className="absolute inset-0">
             <Image

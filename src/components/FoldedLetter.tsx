@@ -30,9 +30,10 @@ export default function FoldedLetter({ letter }: { letter: DepartmentLetter }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96 }}
-            whileHover={{ y: -4 }}
-            transition={{ duration: 0.6 }}
-            className="page-shadow letter-crease group relative mx-auto block h-56 w-full max-w-sm overflow-hidden rounded-sm bg-[var(--color-cream)] sm:h-64"
+            whileHover={{ y: -5, rotate: -0.6, boxShadow: "0 1px 0 rgba(74,53,36,0.25), 6px 34px 60px -18px rgba(0,0,0,0.5)" }}
+            whileTap={{ scale: 0.97, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 24 }}
+            className="page-shadow letter-crease focus-ring group relative mx-auto block h-56 w-full max-w-sm overflow-hidden rounded-sm bg-[var(--color-cream)] sm:h-64"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, var(--color-cream) 49.3%, rgba(74,53,36,0.06) 49.3%, rgba(74,53,36,0.06) 50.7%, var(--color-cream) 50.7%)",
@@ -64,9 +65,10 @@ export default function FoldedLetter({ letter }: { letter: DepartmentLetter }) {
         ) : (
           <motion.div
             key="unfolded"
-            initial={{ opacity: 0, y: 24, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
+            initial={{ opacity: 0, y: 24, scale: 0.97, rotateX: -4, rotate: -0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 190, damping: 24, mass: 0.9 }}
+            style={{ transformPerspective: 1000 }}
             className="page-shadow paper-texture relative min-h-[380px] bg-[var(--color-cream)] px-6 py-8 sm:min-h-[420px] sm:px-14 sm:py-14"
           >
             <div

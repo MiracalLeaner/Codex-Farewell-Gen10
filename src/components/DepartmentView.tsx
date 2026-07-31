@@ -31,10 +31,10 @@ export default function DepartmentView({ slug, department, onClose }: Department
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      initial={{ opacity: 0, scale: 1.015 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.99 }}
+      transition={{ type: "spring", stiffness: 190, damping: 24, mass: 0.9 }}
       className="fixed inset-0 z-[65] overflow-y-auto wood-texture"
     >
       <motion.button
@@ -42,7 +42,7 @@ export default function DepartmentView({ slug, department, onClose }: Department
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="ink-label fixed left-4 top-4 z-[70] flex items-center gap-2 rounded-full border border-[var(--color-gold)]/40 bg-[var(--color-wood)]/80 px-4 py-2.5 text-[11px] text-[var(--color-gold-pale)] backdrop-blur transition-colors hover:border-[var(--color-gold-bright)] sm:left-6 sm:top-6"
+        className="touch-feedback focus-ring ink-label fixed left-[calc(1rem+var(--safe-l))] top-[calc(1rem+var(--safe-t))] z-[70] flex items-center gap-2 rounded-full border border-[var(--color-gold)]/40 bg-[var(--color-wood)]/80 px-4 py-3 text-[11px] text-[var(--color-gold-pale)] backdrop-blur transition-colors hover:border-[var(--color-gold-bright)] sm:left-[calc(1.5rem+var(--safe-l))] sm:top-[calc(1.5rem+var(--safe-t))] sm:py-2.5"
       >
         ← Archive
       </motion.button>
@@ -91,10 +91,11 @@ export default function DepartmentView({ slug, department, onClose }: Department
       </section>
 
       {/* Our Story */}
-      <section className="paper-texture relative px-6 py-16 sm:px-16 sm:py-24">
+      <section className="paper-texture relative px-6 py-16 sm:px-16 sm:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <ScrollReveal>
             <p className="ink-label text-xs text-[var(--color-gold)]">Our Story</p>
+            <div className="mx-auto mt-5 h-px w-10 bg-[var(--color-gold)]/40" />
             <p
               className="mt-6 text-xl leading-relaxed text-[var(--color-ink-soft)] sm:text-2xl"
               style={{ fontFamily: "var(--font-display)", fontStyle: "italic" }}
@@ -148,10 +149,13 @@ export default function DepartmentView({ slug, department, onClose }: Department
         </div>
       </section>
 
-      <div className="wood-texture flex justify-center px-6 pb-20 pt-4">
+      <div
+        className="wood-texture flex justify-center px-6 pt-4"
+        style={{ paddingBottom: "calc(5rem + var(--safe-b))" }}
+      >
         <button
           onClick={onClose}
-          className="ink-label rounded-full border border-[var(--color-gold)]/50 px-7 py-3 text-[11px] text-[var(--color-gold-pale)] transition-colors hover:border-[var(--color-gold-bright)] hover:bg-[var(--color-gold)]/10"
+          className="touch-feedback focus-ring ink-label rounded-full border border-[var(--color-gold)]/50 px-7 py-3.5 text-[11px] text-[var(--color-gold-pale)] transition-colors hover:border-[var(--color-gold-bright)] hover:bg-[var(--color-gold)]/10"
         >
           ← Back to the Archive
         </button>

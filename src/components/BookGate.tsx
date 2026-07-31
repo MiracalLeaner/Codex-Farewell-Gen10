@@ -122,7 +122,7 @@ export default function BookGate({ onOpened, onStart }: BookGateProps) {
                   <motion.button
                     aria-label="Open the Chronicle"
                     onClick={handleOpen}
-                    className="group absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full sm:h-20 sm:w-20"
+                    className="group focus-ring absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full sm:h-20 sm:w-20"
                     style={{
                       background: "radial-gradient(circle at 35% 30%, #8a2c22, #5c1712 70%)",
                       boxShadow: "0 6px 18px rgba(0,0,0,0.55), inset 0 2px 4px rgba(255,255,255,0.15)",
@@ -134,6 +134,7 @@ export default function BookGate({ onOpened, onStart }: BookGateProps) {
                       transition: { duration: 0.8, times: [0, 0.3, 1] },
                     }}
                     whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.94 }}
                   >
                     <span
                       className="ink-label text-[9px] text-[var(--color-gold-pale)]/90 sm:text-[10px]"
@@ -151,10 +152,16 @@ export default function BookGate({ onOpened, onStart }: BookGateProps) {
                 style={{
                   transformStyle: "preserve-3d",
                 }}
+                initial={false}
                 animate={
                   stage === "opening" || entering
-                    ? { rotateY: -150, transition: { duration: 1.4, ease: [0.65, 0, 0.35, 1] } }
-                    : { rotateY: 0 }
+                    ? {
+                        rotateY: -150,
+                        rotateX: -3,
+                        boxShadow: "12px 8px 32px rgba(0,0,0,0.5)",
+                        transition: { type: "spring", stiffness: 55, damping: 14, mass: 1.1 },
+                      }
+                    : { rotateY: 0, rotateX: 0, boxShadow: "0px 0px 0px rgba(0,0,0,0)" }
                 }
               >
                 <div className="absolute inset-3 rounded-sm border border-[var(--color-gold)]/30" />
@@ -180,7 +187,8 @@ export default function BookGate({ onOpened, onStart }: BookGateProps) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.6 }}
-                    className="ink-label rounded-full border border-[var(--color-gold)]/50 px-6 py-3 text-[11px] text-[var(--color-gold-pale)] transition-colors hover:border-[var(--color-gold-bright)] hover:bg-[var(--color-gold)]/10"
+                    whileTap={{ scale: 0.96 }}
+                    className="focus-ring ink-label rounded-full border border-[var(--color-gold)]/50 px-6 py-3.5 text-[11px] text-[var(--color-gold-pale)] transition-colors hover:border-[var(--color-gold-bright)] hover:bg-[var(--color-gold)]/10 sm:py-3"
                   >
                     Open the Chronicle
                   </motion.button>

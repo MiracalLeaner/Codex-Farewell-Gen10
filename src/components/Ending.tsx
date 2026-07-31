@@ -7,7 +7,7 @@ import type { GenerationData } from "@/lib/types";
 export default function Ending({ generation }: { generation: GenerationData }) {
   return (
     <section className="wood-texture relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-20 text-center sm:py-28">
-      <DustField count={20} />
+      <DustField count={20} parallax />
       <div
         className="pointer-events-none absolute left-1/2 top-1/3 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-3xl"
         style={{ background: "radial-gradient(circle, rgba(224,172,83,0.5), transparent 70%)" }}
@@ -74,7 +74,8 @@ export default function Ending({ generation }: { generation: GenerationData }) {
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 2.2 }}
         whileHover={{ opacity: 0.9 }}
-        className="ink-label relative mt-6 inline-block px-2 py-2 text-[10px] text-[var(--color-gold-pale)] underline-offset-4 hover:underline"
+        whileTap={{ opacity: 0.6, scale: 0.96 }}
+        className="focus-ring ink-label relative mt-6 inline-block px-4 py-3 text-[10px] text-[var(--color-gold-pale)] underline-offset-4 hover:underline sm:px-2 sm:py-2"
       >
         Begin again
       </motion.button>

@@ -3,7 +3,7 @@
   "name": "FER",
   "fullName": "Finance & External Relations",
   "tagline": "Người kết nối những giá trị phía sau ánh đèn sân khấu",
-  "story": "FER là nơi những buổi làm việc với nhà tài trợ và những đêm chạy deadline trở thành ký ức chung. Ở đây, mỗi người mang một màu sắc rất riêng — có người vững vàng để đàn em noi theo, có người luôn mang lại cảm giác gần gũi — nhưng tất cả đều để lại trong ban một phần rất khó thay thế.",
+  "story": "FER là nơi những buổi làm việc với nhà tài trợ và những đêm chạy deadline trở thành ký ức chung. Ở đây, mỗi người mang một màu sắc rất riêng - có người vững vàng để đàn em noi theo, có người luôn mang lại cảm giác gần gũi - nhưng tất cả đều để lại trong ban một phần rất khó thay thế.",
   "members": [
     "Phạm Di Huy",
     "Đặng Thị Trà Trúc",
@@ -18,27 +18,27 @@
   "gallery": [
     {
       "image": "/images/fer/gallery-1.jpg",
-      "caption": "Plate I"
+      "caption": "FER những ngày đầu tiên"
     },
     {
       "image": "/images/fer/gallery-2.jpg",
-      "caption": "Plate II"
+      "caption": "Mới zô LSC"
     },
     {
       "image": "/images/fer/gallery-3.jpg",
-      "caption": "Plate III"
+      "caption": "Chạy SCMission"
     },
     {
       "image": "/images/fer/gallery-4.jpg",
-      "caption": "Plate IV"
+      "caption": "Qsuu"
     },
     {
       "image": "/images/fer/gallery-5.jpg",
-      "caption": "Plate V"
+      "caption": "Photoshoot"
     },
     {
       "image": "/images/fer/gallery-6.jpg",
-      "caption": "Plate VI"
+      "caption": "Welcome party"
     }
   ],
   "departmentLetter": {
