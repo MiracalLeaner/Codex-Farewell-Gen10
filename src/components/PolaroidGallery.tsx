@@ -60,7 +60,7 @@ export default function PolaroidGallery({ eyebrow, title, items, dark = false }:
               key={item.image}
               onClick={() => setActive(i)}
               aria-label={item.caption}
-              className="touch-feedback focus-ring page-shadow relative block h-[58vh] max-h-[26rem] min-h-[15rem] shrink-0 snap-center overflow-hidden rounded-sm bg-[var(--color-cream)] p-2"
+              className="touch-feedback focus-ring page-shadow relative block w-[82vw] shrink-0 snap-center overflow-hidden rounded-sm bg-[var(--color-cream)] p-2 sm:h-[58vh] sm:max-h-[26rem] sm:min-h-[15rem] sm:w-auto"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -68,7 +68,7 @@ export default function PolaroidGallery({ eyebrow, title, items, dark = false }:
                 alt={item.caption}
                 loading="lazy"
                 decoding="async"
-                className="h-full w-auto rounded-[1px] object-contain"
+                className="h-auto max-h-[65vh] w-full rounded-[1px] object-contain sm:h-full sm:max-h-none sm:w-auto"
               />
             </button>
           ))}

@@ -57,7 +57,7 @@ export default function MemberLetterModal({ name, paragraphs, onClose }: MemberL
                 <p
                   key={i}
                   className="text-lg leading-[1.85] text-[var(--color-ink-soft)]"
-                  style={{ fontFamily: "var(--font-hand)" }}
+                  style={{ fontFamily: "var(--font-hand-vi)" }}
                 >
                   {p}
                 </p>

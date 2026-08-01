@@ -85,7 +85,7 @@ export default function FoldedLetter({ letter }: { letter: DepartmentLetter }) {
             <div className="mt-8 h-px w-14 bg-[var(--color-gold)]/50" />
             <p
               className="mt-8 whitespace-pre-line text-lg leading-[1.85] text-[var(--color-ink-soft)] sm:text-[1.4rem] sm:leading-[1.9]"
-              style={{ fontFamily: "var(--font-hand)" }}
+              style={{ fontFamily: "var(--font-hand-vi)" }}
             >
               {typed}
               {typed.length < full.length && <span className="animate-pulse">|</span>}
